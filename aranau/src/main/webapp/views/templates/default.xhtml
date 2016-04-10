@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<f:view contentType="text/html" />
+	
+	<h:head>
+		<link rel="stylesheet" href="/aranau/assets/css/template.css"/>
+		
+		<title>Projeto Aranaú</title>
+	</h:head>
+
+<h:body>
+
+	<h:form id="defaultForm">
+		<p:growl id="menssages" autoUpdate="true" />
+		
+		<div class="header col-md-12">
+			<div class="logo-top pull-left">
+				<p:graphicImage value="/assets/imgs/logo-top.png"></p:graphicImage>
+			</div>
+			<div class="menu pull-left">
+				<p:menubar>
+					<p:submenu label="Novo">
+						<p:menuitem value="Gmail" url="http://www.google.com" />
+						<p:menuitem value="Hotmail" url="http://www.hotmail.com" />
+						<p:menuitem value="Yahoo Mail" url="http://mail.yahoo.com" />
+					</p:submenu>
+					<p:submenu label="Problema">
+						<p:menuitem value="Critério" url="/views/criteria/criteria.xhtml" />
+						<p:menuitem value="Break" url="http://www.break.com" />
+					</p:submenu>
+				</p:menubar>
+			</div>
+		</div>
+
+		<div class="content col-md-12">
+			<ui:insert name="body" />
+		</div>
+	</h:form>
+
+</h:body>
+</html>

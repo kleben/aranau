@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<h:body>
+
+	<ui:composition template="/views/templates/default.xhtml">
+		<ui:define name="body">
+		
+			<p:inputText value="#{criteriaBean.criteria.name}" />
+			
+			<p:commandButton action="#{criteriaBean.save}" value="Salvar" update="@form" />
+
+			<p:dataTable var="criteria" value="#{criteriaBean.listCriteria}">
+				<p:column style="width:16px">
+		           <p:rowToggler />
+		       </p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Critério" />
+					</f:facet>
+					<h:outputText value="#{criteria.name}" />
+				</p:column>
+				
+			</p:dataTable>
+			<br/><br/>
+			<p:inputText value="#{criteriaBean.value}" />
+			<p:commandButton action="#{criteriaBean.addValue}" value="Adicionar valor" update="values" ajax="true" />
+			<p:dataTable var="value" value="#{criteria.values}" id="values">
+            	<p:column>
+					<f:facet name="header">
+						<h:outputText value="Valor" />
+					</f:facet>
+					<h:outputText value="#{value}" />
+				</p:column>
+            </p:dataTable>
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

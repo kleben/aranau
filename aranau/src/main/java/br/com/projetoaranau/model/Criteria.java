@@ -1,14 +1,24 @@
 package br.com.projetoaranau.model;
 
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Criteria {
 	
 	private Long id;
 	private String name;
-	private Collection<String> values;
+	private List<String> values = new ArrayList<String>();
 	
 
+	public Criteria(){
+		super();
+	}
+	
+	public Criteria(Criteria criteria){
+		this.name = criteria.getName();
+		this.values = criteria.getValues();
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -25,12 +35,12 @@ public class Criteria {
 		this.name = name;
 	}
 
-	public Collection<String> getValues() {
+	public List<String> getValues() {
 		return values;
 	}
 
-	public void setValues(Collection<String> value) {
-		this.values = value;
+	public void setValues(List<String> values) {
+		this.values = values;
 	}
 
 }

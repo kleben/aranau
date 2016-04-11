@@ -14,29 +14,20 @@
 		
 			<p:inputText value="#{criteriaBean.criteria.name}" />
 			
-			<p:commandButton action="#{criteriaBean.save}" value="Salvar" update="@form" />
+			<p:commandButton action="#{criteriaBean.save}" value="Salvar" update="values, criteriaName" />
 
-			<p:dataTable var="criteria" value="#{criteriaBean.listCriteria}">
-				<p:column style="width:16px">
-		           <p:rowToggler />
-		       </p:column>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Critério" />
-					</f:facet>
-					<h:outputText value="#{criteria.name}" />
-				</p:column>
-				
-			</p:dataTable>
+			<h1> <h:outputText value="#{criteriaBean.criteria.name}" id="criteriaName" /> </h1>
 			<br/><br/>
-			<p:inputText value="#{criteriaBean.value}" />
-			<p:commandButton action="#{criteriaBean.addValue}" value="Adicionar valor" update="values" ajax="true" />
-			<p:dataTable var="value" value="#{criteria.values}" id="values">
+			
+			<p:inputText value="#{criteriaBean.value}" id="valueInput" />
+			<p:commandButton action="#{criteriaBean.addValue}" value="Adicionar valor" update="@form" ajax="true" />
+			
+			<p:dataTable var="val" value="#{criteriaBean.criteria.values}" id="values" rendered="#{criteriaBean.criteria.values.size() > 0}" >
             	<p:column>
 					<f:facet name="header">
 						<h:outputText value="Valor" />
 					</f:facet>
-					<h:outputText value="#{value}" />
+					<h:outputText value="#{val}" />
 				</p:column>
             </p:dataTable>
 		</ui:define>

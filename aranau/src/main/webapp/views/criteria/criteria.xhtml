@@ -12,7 +12,7 @@
 	<ui:composition template="/views/templates/default.xhtml">
 		<ui:define name="body">
 			
-			<p:commandLink action="criteria-new" value="Novo"></p:commandLink>
+			<p:commandButton action="#{criteriaBean.addNewCriteria}" value="Novo critério" />
 
 			<p:dataTable var="criteria" value="#{criteriaBean.listCriteria}" id="datatableCriterias">
 				<p:column style="width:16px">

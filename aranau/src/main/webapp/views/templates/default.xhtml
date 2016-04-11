@@ -22,18 +22,21 @@
 		
 		<div class="header col-md-12">
 			<div class="logo-top pull-left">
-				<p:graphicImage value="/assets/imgs/logo-top.png"></p:graphicImage>
+			 	<h:commandLink action="/views/index"> <p:graphicImage value="/assets/imgs/logo-top.png"></p:graphicImage>
+			 	</h:commandLink>
 			</div>
 			<div class="menu pull-left">
 				<p:menubar>
-					<p:submenu label="Novo">
-						<p:menuitem value="Gmail" url="http://www.google.com" />
-						<p:menuitem value="Hotmail" url="http://www.hotmail.com" />
-						<p:menuitem value="Yahoo Mail" url="http://mail.yahoo.com" />
+					<p:submenu label="Arquivo">
+						<p:menuitem value="Novo" url="http://www.google.com" />
+						<p:menuitem value="Abrir" onclick="PF('dlg2').show();" />
+						<p:menuitem value="Salvar" url="http://mail.yahoo.com" />
 					</p:submenu>
 					<p:submenu label="Problema">
 						<p:menuitem value="Critério" url="/views/criteria/criteria.xhtml" />
-						<p:menuitem value="Break" url="http://www.break.com" />
+						<p:menuitem value="Elicitar preferências" url="http://www.break.com" />
+						<p:menuitem value="Definir alternativas" url="http://www.break.com" />
+						<p:menuitem value="Gerar resultados" url="http://www.break.com" />
 					</p:submenu>
 				</p:menubar>
 			</div>
@@ -41,6 +44,13 @@
 
 		<div class="content col-md-12">
 			<ui:insert name="body" />
+			
+			<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+			    <h:form enctype="multipart/form-data">
+					<p:fileUpload value="#{genericBean.file}" mode="simple" />
+					<p:commandButton value="Abrir" ajax="false"/>
+				</h:form>
+			</p:dialog> 
 		</div>
 	</h:form>
 

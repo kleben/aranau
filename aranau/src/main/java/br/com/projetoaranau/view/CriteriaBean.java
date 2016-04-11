@@ -9,6 +9,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import br.com.projetoaranau.model.Criteria;
+import br.com.projetoaranau.zapros_III.ZaprosMethod;
 
 @SessionScoped
 @ManagedBean(name = "criteriaBean")
@@ -18,6 +19,7 @@ public class CriteriaBean extends GenericBean {
 	private Collection<Criteria> listCriteria = new ArrayList<Criteria>();
 	private Criteria criteria = new Criteria();
 	private String value;
+	//public static ZaprosMethod zapros;
 
 	
 	public CriteriaBean() {
@@ -30,13 +32,19 @@ public class CriteriaBean extends GenericBean {
 	
 	public String addNewCriteria() {
 		criteria = new Criteria();
-		return "criteria/critera-new?faces-redirect=true";
+//		criteria.setValues( new ArrayList<String>() );
+		value = "";
+		return "criteria-new?faces-redirect=true";
 	}
 	
 	public void save() {
-		listCriteria.add(criteria);
-		criteria.setValues( new ArrayList<String>() );
-		//criteria = new Criteria();
+		listCriteria.add( new Criteria(criteria) );
+		
+		for (Criteria criteria : listCriteria) {
+			
+			//zapros.addCriterion(criteria.getName(), criteria.getValues());
+		}
+		
 		
 		FacesMessage message = new FacesMessage();
 		message.setSeverity(FacesMessage.SEVERITY_INFO);
@@ -45,7 +53,8 @@ public class CriteriaBean extends GenericBean {
 	}
 	
 	public void addValue(){
-		this.criteria.getValues().add(this.value);
+		this.criteria.getValues().add( new String(this.value) );
+		this.value = "";
 	}
 
 	public Collection<Criteria> getListCriteria() {

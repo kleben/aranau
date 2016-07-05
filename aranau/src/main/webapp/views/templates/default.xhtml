@@ -11,48 +11,51 @@
 	
 	<h:head>
 		<link rel="stylesheet" href="/aranau/assets/css/template.css"/>
+		<link rel="stylesheet" href="/aranau/assets/css/clearfix.css"/>
 		
 		<title>Projeto Aranaú</title>
 	</h:head>
 
 <h:body>
-
-	<h:form id="defaultForm">
-		<p:growl id="menssages" autoUpdate="true" />
-		
-		<div class="header col-md-12">
-			<div class="logo-top pull-left">
-			 	<h:commandLink action="/views/index"> <p:graphicImage value="/assets/imgs/logo-top.png"></p:graphicImage>
-			 	</h:commandLink>
-			</div>
-			<div class="menu pull-left">
-				<p:menubar>
-					<p:submenu label="Arquivo">
-						<p:menuitem value="Novo" url="http://www.google.com" />
-						<p:menuitem value="Abrir" onclick="PF('dlg2').show();" />
-						<p:menuitem value="Salvar" url="http://mail.yahoo.com" />
-					</p:submenu>
-					<p:submenu label="Problema">
-						<p:menuitem value="Critério" url="/views/criteria/criteria.xhtml" />
-						<p:menuitem value="Elicitar preferências" url="http://www.break.com" />
-						<p:menuitem value="Definir alternativas" url="http://www.break.com" />
-						<p:menuitem value="Gerar resultados" url="http://www.break.com" />
-					</p:submenu>
-				</p:menubar>
-			</div>
-		</div>
-
-		<div class="content col-md-12">
-			<ui:insert name="body" />
+	<div class="container">
+	
+		<h:form id="defaultForm">
+			<p:growl id="messages" autoUpdate="true" showDetail="true" />
 			
-			<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
-			    <h:form enctype="multipart/form-data">
-					<p:fileUpload value="#{genericBean.file}" mode="simple" />
-					<p:commandButton value="Abrir" ajax="false"/>
-				</h:form>
-			</p:dialog> 
-		</div>
-	</h:form>
-
+			<div class="header col-md-12">
+				<div class="logo-top pull-left">
+				 	<h:outputLink value="/aranau" >
+				 		<p:graphicImage value="/assets/imgs/logo-top.png"></p:graphicImage>
+				 	</h:outputLink>
+				</div>
+				<div class="menu pull-right">
+					<p:menubar>
+						<p:submenu label="Arquivo">
+							<p:menuitem value="Novo" url="#" />
+							<p:menuitem value="Abrir" onclick="PF('dialogOpenFile').show();" />
+							<p:menuitem value="Salvar" url="#" />
+						</p:submenu>
+						<p:submenu label="Problema">
+							<p:menuitem value="Critério" url="/views/criteria/criteria.xhtml" />
+							<p:menuitem value="Elicitar preferências" url="/views/preferences/preferences-elicit.xhtml" />
+							<p:menuitem value="Definir alternativas" url="#" />
+							<p:menuitem value="Gerar resultados" url="#" />
+						</p:submenu>
+					</p:menubar>
+				</div>
+			</div>
+	
+			<div class="content col-md-12">
+				<ui:insert name="body" />
+				
+				<p:dialog header="Abrir arquivo" widgetVar="dialogOpenFile" modal="true" height="100">
+				    <h:form enctype="multipart/form-data">
+						<p:fileUpload value="#{genericBean.fileUploaded}" mode="simple" />
+						<p:commandButton value="Abrir" ajax="false" action="#{genericBean.upload}" update="messages" />
+					</h:form>
+				</p:dialog> 
+			</div>
+		</h:form>
+	</div>
 </h:body>
 </html>

@@ -1,10 +1,22 @@
 @CHARSET "UTF-8";
 
-.pull-left { float: left; }
-.col-md-12 { float: left; width: 100%; }
+body { color: #333; }
+a { color: #333; }
 
-.header {}
-.header .logo-top { padding-right: 5%; width: 20%; }
+.pull-left { float: left; }
+.pull-right { float: right; }
+.col-md-12 { float: left; width: 100%; }
+.box-azul { background: #008fcf; border-radius: 10px; padding: 10px; }
+
+.container { margin: 0 auto; width: 1024px; }
+
+.header { border-bottom: 1px dotted #ccc; margin-bottom: 20px; padding-bottom: 20px; }
+.header .logo-top { padding-right: 5%; margin-top: 15px; width: 20%; }
+.header .logo-top img { width: 100%; }
 .header .menu { margin-top: 2%; width: 70%; }
 
-.content { padding-top: 2% ;}
+.content { }
+
+.icons-panel { }
+.icons-panel .icon { float: left; padding: 30px; width: 115px; }
+.icons-panel .icon p { margin-top: 10px; text-align: center; }

@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<h:body>
+
+	<ui:composition template="/views/templates/default.xhtml">
+		<ui:define name="body">
+		<f:event listener="#{preferencesBean.init}" type="preRenderView" />
+			
+			<p:outputPanel rendered="#{!preferencesBean.preferenciasElicitadas}">
+				<p>Tendo-se as seguintes situações (1 e 2):</p>
+				
+				<p><h:outputLabel id="situationDescription" value="#{preferencesBean.situationDescription}"></h:outputLabel></p>
+				<p><h:outputLabel id="situationDescription2" value="#{preferencesBean.situationDescription2}"></h:outputLabel></p>
+				<p><br/></p>
+				<p><br/></p>
+				<p><br/></p>
+				
+				
+				<p><h:outputLabel id="labelSituation1" value="#{preferencesBean.labelSituation1}"></h:outputLabel></p>
+				<p><h:outputLabel id="labelSituation2" value="#{preferencesBean.labelSituation2}"></h:outputLabel></p>
+				
+				
+				<p:selectOneRadio id="preferences" value="#{preferencesBean.selectedPreference}" layout="grid" columns="1" binding="#{preferencesBean.selectOfPreferences}">
+					<f:selectItems value="#{preferencesBean.preferencesOptions}" var="c" itemLabel="#{city}" itemValue="#{city}"/>
+		        </p:selectOneRadio>
+	            
+				<br/><br/>
+				<p:commandButton value="Salvar" actionListener="#{preferencesBean.salvar}" ajax="true" update="@form, preferences" />
+				
+			</p:outputPanel>
+			<p:outputPanel rendered="#{preferencesBean.preferenciasElicitadas}">
+				<p>As preferências já foram elicitadas, deseja redefinir as preferências?</p>
+				<p:commandButton value="Não" action="#{preferencesBean.voltar}" update="@form, preferences" />
+				<p:commandButton value="Sim" action="#{preferencesBean.salvar}" ajax="true" update="@form, preferences" />
+			</p:outputPanel>
+			
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

@@ -12,24 +12,26 @@
 	<ui:composition template="/views/templates/default.xhtml">
 		<ui:define name="body">
 		
+			<p:commandButton action="#{criteriaBean.save}" value="Salvar" update="messages, values, criteriaName" styleClass="pull-right" />
 			<p:inputText value="#{criteriaBean.criteria.name}" />
-			
-			<p:commandButton action="#{criteriaBean.save}" value="Salvar" update="values, criteriaName" />
+			<p:commandButton action="#{criteriaBean.newCriteria}" value="Add critério" update="messages, values, criteriaName" /> 
 
 			<h1> <h:outputText value="#{criteriaBean.criteria.name}" id="criteriaName" /> </h1>
 			<br/><br/>
 			
-			<p:inputText value="#{criteriaBean.value}" id="valueInput" />
-			<p:commandButton action="#{criteriaBean.addValue}" value="Adicionar valor" update="@form" ajax="true" />
-			
-			<p:dataTable var="val" value="#{criteriaBean.criteria.values}" id="values" rendered="#{criteriaBean.criteria.values.size() > 0}" >
-            	<p:column>
-					<f:facet name="header">
-						<h:outputText value="Valor" />
-					</f:facet>
-					<h:outputText value="#{val}" />
-				</p:column>
-            </p:dataTable>
+			<div class="col-md-12 box-azul">
+				<p:inputText value="#{criteriaBean.value}" id="valueInput" />
+				<p:commandButton action="#{criteriaBean.addValue}" value="Adicionar valor" update="@form" ajax="true" />
+				
+				<p:dataTable var="val" value="#{criteriaBean.criteria.values}" id="values" rendered="#{criteriaBean.criteria.values.size() > 0}" >
+	            	<p:column>
+						<f:facet name="header">
+							<h:outputText value="Valor" />
+						</f:facet>
+						<h:outputText value="#{val}" />
+					</p:column>
+	            </p:dataTable>
+			</div>
 		</ui:define>
 	</ui:composition>
 </h:body>

@@ -11,8 +11,28 @@
 
 	<ui:composition template="/views/templates/default.xhtml">
 		<ui:define name="body">
-			<p:outputLabel value="Olá Prime Faces" />
-			<p:spinner />
+		
+			<f:event listener="#{problemBean.init}" type="preRenderView" />
+			
+			<p:outputPanel styleClass="icons-panel">
+			
+				<p:commandLink styleClass="icon" onclick="PF('dialogOpenFile').show();" ajax="true"  >
+					<h:graphicImage value="/assets/imgs/icon-open.png" />
+					<p><h:outputText value="Abrir" /></p>
+				</p:commandLink>
+				
+				<p:commandLink styleClass="icon">
+					<h:graphicImage value="/assets/imgs/icon-file-download.png" />
+					<p><h:outputText value="Salvar" /></p>
+				</p:commandLink>
+				
+				<p:commandLink styleClass="icon">
+					<h:graphicImage value="/assets/imgs/icon-graphic.png" />
+					<p><h:outputText value="Gerar gráfico" /></p>
+				</p:commandLink>
+				
+			</p:outputPanel>
+		
 		</ui:define>
 	</ui:composition>
 </h:body>

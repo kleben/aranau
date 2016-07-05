@@ -12,8 +12,10 @@
 	<ui:composition template="/views/templates/default.xhtml">
 		<ui:define name="body">
 			
-			<p:commandButton action="#{criteriaBean.addNewCriteria}" value="Novo critério" />
-
+			<p:commandButton action="#{criteriaBean.linkAddNewCriteria}" value="Novo critério" styleClass="pull-right" />
+			
+			<div class="clearfix"></div>
+			
 			<p:dataTable var="criteria" value="#{criteriaBean.listCriteria}" id="datatableCriterias">
 				<p:column style="width:16px">
 		           <p:rowToggler />

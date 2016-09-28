@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jstl/core">
+
+<h:head>
+</h:head>
+
+<h:body>
+
+	<ui:composition template="/views/templates/default.xhtml">
+		<ui:define name="body">
+			
+		
+			<p:commandButton value="Salvar" update="messages, alternativeName" styleClass="pull-right" />
+			<p:inputText value="#{alternativesBean.alternativeName}" />
+			<p:commandButton action="#{alternativesBean.save}" value="Add alternative" update="@form" ajax="true" /> 
+
+			<h1> <h:outputText value="#{alternativesBean.alternativeName}" id="alternativeName" /> </h1>
+			<br/><br/>
+			
+			<div class="col-md-12 box-azul" style="color: #FFF">
+			
+			
+				<c:forEach items="#{alternativesBean.listCriteria}" var="criteria" varStatus="index">
+					<div class="col-md-4">
+				        <p:outputLabel value="#{criteria.description}:" />
+				        <hr style="color:#FFF;" />
+				        <p>#{index.index}</p>
+				        
+						<p:selectOneRadio value="#{alternativesBean.arrayValores[index.index]}" onchange="submit()" layout="grid" columns="1" >
+							<f:selectItems value="#{criteria.values}" var="c" itemLabel="#{value}" itemValue="#{value}"/>
+				        </p:selectOneRadio>
+					</div>
+			     </c:forEach>
+			     
+			</div>
+			
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

@@ -33,6 +33,7 @@
 	            
 				<br/><br/>
 				<p:commandButton value="Salvar" actionListener="#{preferencesBean.salvar}" ajax="true" update="@form, preferences" />
+				<p:hotkey bind="return" update="@form, preferences" actionListener="#{preferencesBean.salvar}"/>
 				
 			</p:outputPanel>
 			<p:outputPanel rendered="#{preferencesBean.preferenciasElicitadas}">

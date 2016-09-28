@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<h:body>
+
+	<ui:composition template="/views/templates/default.xhtml">
+		<ui:define name="body">
+			
+			<p:commandButton action="#{resultBean.gerarResultado('fiq')}" update="resultTable" value="FIQ" ajax="true" />
+			<p:commandButton action="#{resultBean.gerarResultado('rank')}" update="resultTable" value="Rank" ajax="true" />
+			
+			<h:outputText escape="false" value="#{resultBean.tabela}" id="resultTable"/>
+			
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>
